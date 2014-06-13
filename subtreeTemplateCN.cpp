@@ -1,8 +1,8 @@
-/*  description : subset tree (call back)solution of ship loading 
+ï»¿/*  description : subset tree (call back)solution of ship loading 
  *  version :     2014-6-3
  *  author :      brt
- *  note   £º     Ö»ĞŞ¸ÄÁËboundº¯Êı£¨ÉÏ½çº¯Êı£© ºÍ showResult º¯Êı £¨¶ÔÃ»ÓĞ·ûºÏÌõ¼şµÄ·½°¸×÷³öÌáÊ¾£©£¬
- *		   		  Ôö¼ÓÁËÀà±äÁ¿remain£¬ÏêÇé¼û×¢ÊÍ 
+ *  note   ï¼š     åªä¿®æ”¹äº†boundå‡½æ•°ï¼ˆä¸Šç•Œå‡½æ•°ï¼‰ å’Œ showResult å‡½æ•° ï¼ˆå¯¹æ²¡æœ‰ç¬¦åˆæ¡ä»¶çš„æ–¹æ¡ˆä½œå‡ºæç¤ºï¼‰ï¼Œ
+ *		   		  å¢åŠ äº†ç±»å˜é‡remainï¼Œè¯¦æƒ…è§æ³¨é‡Š 
  */ 
 #include <iostream>
 #include <vector>
@@ -17,18 +17,18 @@ class Loading{
     friend void maxLoading<Type> (Type weight[], Type containFirstShip, int numContainer);
     private:
         void backTrack(int depth);
-        bool constraint(int depth);  //µ±Ç°À©Õ¹½Úµã´¦µÄÌõ¼şÔ¼Êøº¯Êı
-        bool bound(int depth);       //µ±Ç°À©Õ¹½Úµã´¦µÄÏŞ½çº¯Êı
-        void record();               //¼ÇÂ¼×î¼Ñ·½°¸
-        void showResult();           //´òÓ¡½á¹û
-        int numContainer;            //¼¯×°ÏäÊıÄ¿
-        Type* weight,                //¼¯×°ÏäÖØÁ¿Êı×éÍ·Ö¸Õë£¨¿ÉÓÃÈİÆ÷´úÌæ£ºµ«ÊÇ±È½ÏÀË·Ñ 
-		      containFirstShip,      //µÚÒ»ËÒ´¬ÈİÁ¿
-			  currentLoading,        //µ±Ç°ÔØÖØÁ¿
-			  remain,                //µ±Ç°Î´ÌÖÂÛÊ£Óà¼¯×°ÏäµÄ×ÜÖØÁ¿ 
-			  bestLoading;           //×îÓÅ£¨×î¶à£©ÔØÖØÁ¿
-        bool* select;                //Ñ¡Ôñ¼¯×°ÏäµÄ±êÖ¾Êı×é
-        vector<int> bestSelect;      //×îÓÅÑ¡Ôñ·½°¸µÄ¼¯×°ÏäµÄ±êÖ¾Êı×é£¨ÍµÀÁ£¬Ñ¡ÓÃË³ĞòÈİÆ÷Ì«ÀË·Ñ£© 
+        bool constraint(int depth);  //å½“å‰æ‰©å±•èŠ‚ç‚¹å¤„çš„æ¡ä»¶çº¦æŸå‡½æ•°
+        bool bound(int depth);       //å½“å‰æ‰©å±•èŠ‚ç‚¹å¤„çš„é™ç•Œå‡½æ•°
+        void record();               //è®°å½•æœ€ä½³æ–¹æ¡ˆ
+        void showResult();           //æ‰“å°ç»“æœ
+        int numContainer;            //é›†è£…ç®±æ•°ç›®
+        Type* weight,                //é›†è£…ç®±é‡é‡æ•°ç»„å¤´æŒ‡é’ˆï¼ˆå¯ç”¨å®¹å™¨ä»£æ›¿ï¼šä½†æ˜¯æ¯”è¾ƒæµªè´¹ 
+		      containFirstShip,      //ç¬¬ä¸€è‰˜èˆ¹å®¹é‡
+			  currentLoading,        //å½“å‰è½½é‡é‡
+			  remain,                //å½“å‰æœªè®¨è®ºå‰©ä½™é›†è£…ç®±çš„æ€»é‡é‡ 
+			  bestLoading;           //æœ€ä¼˜ï¼ˆæœ€å¤šï¼‰è½½é‡é‡
+        bool* select;                //é€‰æ‹©é›†è£…ç®±çš„æ ‡å¿—æ•°ç»„
+        vector<int> bestSelect;      //æœ€ä¼˜é€‰æ‹©æ–¹æ¡ˆçš„é›†è£…ç®±çš„æ ‡å¿—æ•°ç»„ï¼ˆå·æ‡’ï¼Œé€‰ç”¨é¡ºåºå®¹å™¨å¤ªæµªè´¹ï¼‰ 
 };
 
 template <class Type>
@@ -52,7 +52,7 @@ bool Loading <Type> ::  bound(int depth)
 	remain -= weight[depth]; 
     if(select[depth] == true)
             remain += weight[depth]; 
-	if((currentLoading + remain) < bestLoading) //ÌáÇ°ÅĞ¶ÏÓĞÄ¾ÓĞ¸üÓÅ½â 
+	if((currentLoading + remain) < bestLoading) //æå‰åˆ¤æ–­æœ‰æœ¨æœ‰æ›´ä¼˜è§£ 
 		    return false; 
 	return true; 
 }
@@ -62,7 +62,7 @@ void Loading <Type> ::  record()
 {
  	 if(currentLoading > bestLoading){
  	 	bestLoading = currentLoading;
- 	 	//¼ÇÂ¼¸üÓÅ½â 
+ 	 	//è®°å½•æ›´ä¼˜è§£ 
  	 	if(bestSelect.size() > 0)
 		    bestSelect.clear();
  	 	for(int i = 0; i < numContainer; ++i)
@@ -74,17 +74,17 @@ template < class Type >
 void Loading < Type > :: backTrack(int depth)
 {
 
-    if(depth >= numContainer) {//ÂÖÑ¯µ½×îºóÒ»¸ö¼¯×°Ïä 
+    if(depth >= numContainer) {//è½®è¯¢åˆ°æœ€åä¸€ä¸ªé›†è£…ç®± 
         record();
         return; 
     }else{
 	    for(int i = 1; i >= 0; --i){
-	    	select[depth] = bool(i); //1 £º´ú±íÑ¡ÔñÕâÌõ±ß£¬¼´µÚdepthÕâ¸ö¼¯×°Ïä 
-	    	if(constraint(depth) && bound(depth)){//2¸öÏŞÖÆº¯Êı¼´¼ôÖ¦£¬²»Âú×ãÌõ¼ş²»¼ÌĞøÑØÕâ¸öÉî¶ÈËÑË÷ 
-	    		if(select[depth] == true){ //½øÈëÉî²ã×ÓÊ÷£¬¸üĞÂ×´Ì¬ : ÏÂÃæÁ½ĞĞ
+	    	select[depth] = bool(i); //1 ï¼šä»£è¡¨é€‰æ‹©è¿™æ¡è¾¹ï¼Œå³ç¬¬depthè¿™ä¸ªé›†è£…ç®± 
+	    	if(constraint(depth) && bound(depth)){//2ä¸ªé™åˆ¶å‡½æ•°å³å‰ªæï¼Œä¸æ»¡è¶³æ¡ä»¶ä¸ç»§ç»­æ²¿è¿™ä¸ªæ·±åº¦æœç´¢ 
+	    		if(select[depth] == true){ //è¿›å…¥æ·±å±‚å­æ ‘ï¼Œæ›´æ–°çŠ¶æ€ : ä¸‹é¢ä¸¤è¡Œ
 	    			currentLoading += weight[depth];
 	    			backTrack(depth + 1);
-					currentLoading -= weight[depth];//Éî¶ÈËÑË÷£¬»ØËİÊ±£¬×´Ì¬»¹Ô­ 
+					currentLoading -= weight[depth];//æ·±åº¦æœç´¢ï¼Œå›æº¯æ—¶ï¼ŒçŠ¶æ€è¿˜åŸ 
 					select[depth] = false; 
 	    		}else{
 	    			backTrack(depth + 1);
@@ -99,14 +99,14 @@ void Loading < Type > :: showResult()
 {
 	if(bestSelect.size() > 0){
 		vector<int> :: iterator it;
-		cout << "ÒÔÏÂĞòºÅµÄ¼¯×°Ïä½«±»Ñ¡Ôñ : " << endl;
+		cout << "ä»¥ä¸‹åºå·çš„é›†è£…ç®±å°†è¢«é€‰æ‹© : " << endl;
 		for(it = bestSelect.begin(); it != bestSelect.end(); ++it){
 			cout << (*it) + 1 << " ";
 		}
 		cout << endl;
-		cout << "µÚÒ»¸ö¼¯×°Ïä×î´ó×°ÔØÁ¿ : " << bestLoading << endl;
+		cout << "ç¬¬ä¸€ä¸ªé›†è£…ç®±æœ€å¤§è£…è½½é‡ : " << bestLoading << endl;
 	}else{
-		cout << "Ã»ÓĞÊÊºÏµÄ×°ÔØ·½°¸ !" << endl;
+		cout << "æ²¡æœ‰é€‚åˆçš„è£…è½½æ–¹æ¡ˆ !" << endl;
 	}
 }
 
@@ -118,7 +118,7 @@ void maxLoading(Type weight[], Type containFirstShip, int numContainer)
     memset(select, false, numContainer);
     x.select = select;
     x.weight = weight;
-    for(int i = 0; i < numContainer; ++i){ //¸ù¾İremainµÄ¶¨Òå½øĞĞ³õÊ¼»¯ 
+    for(int i = 0; i < numContainer; ++i){ //æ ¹æ®remainçš„å®šä¹‰è¿›è¡Œåˆå§‹åŒ– 
     	x.remain += weight[i];
     } 
     x.containFirstShip = containFirstShip;
@@ -135,14 +135,14 @@ int main()
 {
     Loading<int> testObj;
     int numContainer;
-    cout << "ÇëÊäÈë¼¯×°ÏäÊıÄ¿ : " << endl;
+    cout << "è¯·è¾“å…¥é›†è£…ç®±æ•°ç›® : " << endl;
     cin >> numContainer;
     int * weight = new int[numContainer];
-    cout << "ÊäÈë¸÷¼¯×°ÏäÖØÁ¿ : " << endl;
+    cout << "è¾“å…¥å„é›†è£…ç®±é‡é‡ : " << endl;
     for(int i = 0; i < numContainer; ++i)
         cin >> weight[i];
     int containFirstShip, containSecondShip;
-    cout << "ÊäÈë2 ship µÄÈİÁ¿ : " << endl;
+    cout << "è¾“å…¥2 ship çš„å®¹é‡ : " << endl;
     cin >> containFirstShip >> containSecondShip;
     maxLoading(weight, containFirstShip, numContainer);
     delete [] weight;
