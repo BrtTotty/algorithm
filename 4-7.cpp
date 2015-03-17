@@ -1,3 +1,11 @@
+/*
+ *	brief:   多处服务最优解（多处生产最优问题） 
+ *  note：   null 
+ *  author:  brt
+ *  date:    2014-06-12
+ *  version: release
+ */
+ 
 #include<iostream>
 #include <vector>
 #include<algorithm> 
@@ -25,22 +33,24 @@ double greedy(vector<int>x,int serverNum)
 }
 int  main()
 {
- int guessNum;
- int serverNum;
- int i, temp, average;
- vector<int>serveTimeVec;
- 
- cin>>guessNum;
- cout<<"please input the num of the server:"<<endl;
- cin>>serverNum;
- cout<<"please input the need service time of each customer:"<<endl;
- for(i = 1; i <= guessNum; ++i){
-	 cout << "No."<<i<<endl;
-	 cin >> temp;
-	 serveTimeVec.push_back(temp);
- }
- average = greedy(serveTimeVec, serverNum);
- cout << "the least average waiting time is:" << average << endl;		
- return 0;
+	int guessNum;
+	int serverNum;
+	int i, temp, average;
+	vector<int>serveTimeVec;
+	
+	cin>>guessNum;
+	cout<<"please input the num of the server:"<<endl;
+	cin>>serverNum;
+	cout<<"please input the need service time of each customer:"<<endl;
+	
+	for(i = 1; i <= guessNum; ++i){
+		cout << "No."<<i<<endl;
+		cin >> temp;
+		serveTimeVec.push_back(temp);
+	}
+	
+	average = greedy(serveTimeVec, serverNum);
+	cout << "the least average waiting time is:" << average << endl;		
+	return 0;
 }
 
